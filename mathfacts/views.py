@@ -9,7 +9,7 @@ class MathGameView(TemplateView):
 
 class MathScoreView(ListView):
     model = PlayerScores
-    template_name = 'mathfacts_scorelist.html'
+    template_name = 'pages/math_scorelist.html'
     scores_list = 'math_scores'
 
     def get_queryset(self):

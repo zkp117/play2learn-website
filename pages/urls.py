@@ -6,5 +6,5 @@ app_name = 'pages'
 urlpatterns = [
     path('', HomePageView.as_view(), name='homepage'),
     path('about-us/', AboutUsView.as_view(), name='about-us'),
-    path('mathfacts/', MathFactsView.as_view(), name='mathfacts'),
+    path('math_scorelist/', MathFactsView.as_view(), name='math-scorelist'),
 ]
