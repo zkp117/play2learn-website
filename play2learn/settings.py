@@ -22,8 +22,8 @@ INSTALLED_APPS = [
 
     # local apps
     'pages.apps.PagesConfig',
-    'jokes.apps.AnagramhuntConfig',
-    'jokes.apps.MathfactsConfig',
+    'anagramhunt.apps.AnagramhuntConfig',
+    'mathfacts.apps.MathfactsConfig',
 ]
 
 MIDDLEWARE = [
