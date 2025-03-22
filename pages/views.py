@@ -5,3 +5,6 @@ class HomePageView(TemplateView):
 
 class AboutUsView(TemplateView):
     template_name = 'pages/about_us.html'
+
+class MathFactsView(TemplateView):
+    template_name = 'games/mathfacts'
