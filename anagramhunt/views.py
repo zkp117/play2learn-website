@@ -8,5 +8,7 @@ class AnagramGameView(TemplateView):
         wordgame = Anagramhunt.objects.get(pk=kwargs['pk'])
         return render(request, 'anagramhunt/play.html', {'wordgame': wordgame})
 
-class AnagramScoreView(ListView):
-    model = score
+class AnagramScoresView(ListView):
+    model = Anagramhunt
+    template_name = 'words_scorelist.html'
+    scores = 'anagram_scores'
