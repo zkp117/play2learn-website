@@ -6,7 +6,6 @@ class Mathfacts(models.Model):
 
     def __str__(self):
         return self.play
-    
 class PlayerScores(models.Model):
     mathgame = models.ForeignKey(Mathfacts, on_delete=models.CASCADE)
     score = models.IntegerField

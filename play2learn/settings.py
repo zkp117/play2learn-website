@@ -58,17 +58,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'play2learn.wsgi.application'
 
 DATABASES = {
-    'default': { # this is the 'math_scores' database
+    'default': { # 
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'math_scores',
-        'USER': 'postgres',
-        'PASSWORD': 'Pandora117!',
-        'HOST': 'localhost',
-        'PORT': 6623
-    },
-    'wordscores': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'word_scores',
+        'NAME': 'p2l_scores',
         'USER': 'postgres',
         'PASSWORD': 'Pandora117!',
         'HOST': 'localhost',
