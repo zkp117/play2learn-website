@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'anagramhunt.apps.AnagramhuntConfig',
     'mathfacts.apps.MathfactsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,14 +58,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'play2learn.wsgi.application'
 
 DATABASES = {
-    'default': {
+    'math_scores': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAMES': 'math_scores' 'word_scores',
+        'NAMES': 'math_scores',
         'USER': 'postgres',
         'PASSWORD': 'Pandora117!',
         'HOST': 'localhost',
         'PORT': 6623
-    }
+    },
+    'word_scores': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAMES': 'word_scores',
+        'USER': 'postgres',
+        'PASSWORD': 'Pandora117!',
+        'HOST': 'localhost',
+        'PORT': 6623
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -81,6 +90,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# AUTHENTICATION SETTINGS
+AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 
