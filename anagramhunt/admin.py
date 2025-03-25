@@ -13,5 +13,5 @@ class WordScoreAdmin(admin.ModelAdmin):
     
     def get_readonly_fields(self, request, obj=None):
         if obj: 
-            return ('created', 'updated')
+            return ('slug','created', 'updated')
         return ()
