@@ -13,12 +13,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # built-in django apps
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admindocs',
+    'django_extensions',
 
     # local apps
     'pages.apps.PagesConfig',
@@ -35,6 +36,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
+     'django.middleware.cache.CacheMiddleware',
 ]
 
 ROOT_URLCONF = 'play2learn.urls'
