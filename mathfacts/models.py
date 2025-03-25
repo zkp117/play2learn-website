@@ -7,6 +7,7 @@ class Mathfacts(models.Model):
         return self.play
 class MathScore(models.Model):
     mathgame = models.ForeignKey(Mathfacts, on_delete=models.CASCADE)
+    levellength = models.CharField(max_length=100)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField
     created = models.DateTimeField(auto_now_add=True)  # Add this
