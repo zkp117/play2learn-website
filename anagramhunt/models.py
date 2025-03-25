@@ -2,10 +2,10 @@ from django.db import models
 from django.conf import settings
 
 WORD_LENGTHS = [
-        ('5', '5 letters'),
-        ('6', '6 letters'),
-        ('7', '7 letters'),
-        ('8', '8 letters'),
+    ('5', '5 letters'),
+    ('6', '6 letters'),
+    ('7', '7 letters'),
+    ('8', '8 letters'),
     ]
 class Anagramhunt(models.Model):
     play = models.CharField(max_length=100)
