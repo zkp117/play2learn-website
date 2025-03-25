@@ -8,7 +8,7 @@ class WordScoreAdmin(admin.ModelAdmin):
                     'wordlength']
     
     def updatedwordlength(self, obj):
-        return len(obj.wordgame)  # Return the length of the 'wordgame' field
+        return len(obj.wordlengths)  # Return the length of the 'wordgame' field
     updatedwordlength.admin_order_field = 'wordgame'  # Allow sorting by the wordgame field
     updatedwordlength.short_description = 'Word Game Length'  # Set a custom column header
 
