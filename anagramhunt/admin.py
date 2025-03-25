@@ -4,15 +4,13 @@ from .models import WordScore
 @admin.register(WordScore)
 class WordScoreAdmin(admin.ModelAdmin):
     model = WordScore
-    list_display = ['user', 'score', 'created', 'updated'
-                    'wordlength']
+    list_display = ['user', 'score', 'created', 'updated',
+                    'wordlengths']
     
-    def updatedwordlength(self, obj):
-        return len(obj.wordlengths)  # Return the length of the 'wordgame' field
-    updatedwordlength.admin_order_field = 'wordgame'  # Allow sorting by the wordgame field
-    updatedwordlength.short_description = 'Word Game Length'  # Set a custom column header
-
-
+    def get_word_length_display(self, obj):
+        return obj.get_wordlengths_display()
+    get_word_length_display.short_description = 'Word Length'
+    
     def get_readonly_fields(self, request, obj=None):
         if obj: 
             return ('created', 'updated')

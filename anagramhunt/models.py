@@ -18,7 +18,7 @@ class WordScore(models.Model):
     wordlengths = models.CharField(
         max_length = 1,
         choices = WORD_LENGTHS,
-        default = '5'
+        default = '5',
     )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)  
