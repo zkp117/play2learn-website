@@ -14,16 +14,17 @@ class Mathfacts(models.Model):
         return self.play
 class MathScore(models.Model):
     chosen_operation = models.CharField(
+        max_length=1
         choices = MATH_OPERATIONS,
-        default = 'Addition',
+        default = '1',
     )
-    highest_number = models.CharField(max_length=100)
+    chosen_highest_number = models.CharField(max_length=100)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    score = models.IntegerField
+    score = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username} - Score: {self.score} - Level: {self.highest_number}"
+        return f"{self.user.username} - Score: {self.score} - Level: {self.chosen_highest_number}"
     
 
