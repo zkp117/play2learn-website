@@ -23,7 +23,7 @@ class MathScore(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
     slug = models.SlugField(
-        max_length=50, unique=True, null=True, editable=False
+        max_length=50, unique=True, null=False, editable=False
     )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

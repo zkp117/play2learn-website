@@ -22,7 +22,7 @@ class WordScore(models.Model):
         default = '5',
     )
     slug = models.SlugField(
-        max_length=50, unique=True, null=True, editable=False
+        max_length=50, unique=True, null=False, editable=False
     )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)  
