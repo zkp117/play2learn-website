@@ -14,7 +14,7 @@ class Mathfacts(models.Model):
         return self.play
 class MathScore(models.Model):
     chosen_operation = models.CharField(
-        max_length=1
+        max_length=1,
         choices = MATH_OPERATIONS,
         default = '1',
     )

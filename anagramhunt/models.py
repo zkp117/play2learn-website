@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-WORD_LENGTHS = [
+WORD_LENGTH = [
     ('5', '5 letters'),
     ('6', '6 letters'),
     ('7', '7 letters'),
@@ -15,13 +15,13 @@ class Anagramhunt(models.Model):
 class WordScore(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField(default = 0)
-    word_lengths = models.CharField(
+    word_length = models.CharField(
         max_length = 1,
-        choices = WORD_LENGTHS,
+        choices = WORD_LENGTH,
         default = '5',
     )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)  
 
     def __str__(self):
-        return f"{self.user.username} - Word Score: {self.score} - Length: {self.get_word_lengths_display()}"
+        return f"{self.user.username} - Word Score: {self.score} - Length: {self.get_word_length_display()}"
