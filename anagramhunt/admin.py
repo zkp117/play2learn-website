@@ -5,7 +5,7 @@ from .models import WordScore
 class WordScoreAdmin(admin.ModelAdmin):
     model = WordScore
     list_display = ['user', 'score', 'created', 'updated',
-                    'wordlengths']
+                    'word_lengths']
     
     def get_word_length_display(self, obj):
         return obj.get_wordlengths_display()
