@@ -5,6 +5,7 @@ from django.conf import settings
 
 
 def send_email(to, subject, content, sender='admin@example.com'):
+    print("DEBUG: API Key ->", settings.SENDGRID_API_KEY)
     sg = sendgrid.SendGridAPIClient(settings.SENDGRID_API_KEY)
     mail = Mail(
         from_email=sender,
