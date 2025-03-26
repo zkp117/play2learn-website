@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 ]
 
+SITE_ID = 1
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -50,7 +52,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
-     'django.middleware.cache.CacheMiddleware',
+    'django.middleware.cache.CacheMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'play2learn.urls'
@@ -100,6 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # AUTHENTICATION SETTINGS
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, even w/o `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth`-specific auth methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
