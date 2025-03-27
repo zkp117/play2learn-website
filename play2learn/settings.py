@@ -108,14 +108,14 @@ LOGIN_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'pages:homepage'
 
 ## django-allauth settings
-ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
+ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Default: 3
-ACCOUNT_EMAIL_REQUIRED = True # Default: False
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Default: 'optional'
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
+ACCOUNT_RATE_LIMITS = {
+    "login_failed": "5/300s",  # 5 failed logins in 300 seconds
+}
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login' # Default: '/'
-ACCOUNT_USERNAME_REQUIRED = False # Default: True
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, even w/o `allauth`
