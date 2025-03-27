@@ -10,4 +10,4 @@ class MathFactsView(TemplateView):
     template_name = 'pages/math_scorelist.html'
 
 class MyAccountView(TemplateView):
-    template_name = "my_account.html" 
+    template_name = "account/my_account.html" 

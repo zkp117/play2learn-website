@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 
 class MyAccountView(TemplateView):
-    template_name = "my_account.html" 
+    template_name = "account/my_account.html" 
 
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
