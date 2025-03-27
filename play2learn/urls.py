@@ -12,5 +12,6 @@ urlpatterns = [
     # Local Apps
     path('account/', include('allauth.urls')),
     path('mathfacts/', include('mathfacts.urls')),
+    path('my-account/', MyAccountView.as_view(), name='my-account'),
     path('', include('pages.urls')),
 ]
