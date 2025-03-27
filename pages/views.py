@@ -8,3 +8,6 @@ class AboutUsView(TemplateView):
 
 class MathFactsView(TemplateView):
     template_name = 'pages/math_scorelist.html'
+
+class MyAccountView(TemplateView):
+    template_name = "my_account.html" 
