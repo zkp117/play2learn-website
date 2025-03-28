@@ -6,7 +6,7 @@ def send_email(to, subject, content):
     try:
         sg = sendgrid.SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
         email = Mail(
-            from_email="neeneez2008@gmail.com",  # Use a valid email address
+            from_email="neeneez2008@gmail.com",
             to_emails=to,
             subject=subject,
             html_content=content
