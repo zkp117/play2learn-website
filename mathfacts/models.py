@@ -20,7 +20,7 @@ class MathScore(models.Model):
         default = '1',
     )
     chosen_highest_number = models.CharField(max_length=100)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     score = models.IntegerField(default=0)
     slug = models.SlugField(
         max_length=50, unique=True, null=False, editable=False

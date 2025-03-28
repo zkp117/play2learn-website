@@ -14,7 +14,7 @@ class Anagramhunt(models.Model):
     def __str__(self):
         return self.play
 class WordScore(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     score = models.IntegerField(default = 0)
     word_length = models.CharField(
         max_length = 1,
