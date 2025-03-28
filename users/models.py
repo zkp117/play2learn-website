@@ -6,6 +6,5 @@ class CustomUser(AbstractUser):
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
-    
     def get_absolute_url(self):
         return reverse('my-account')

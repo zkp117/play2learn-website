@@ -16,7 +16,6 @@ class SignupForm(forms.Form):
         user.save()
 class CustomUserChangeForm(UserChangeForm):
     password = None
-    
     class Meta:
         model = get_user_model()
         fields = ('email', 'username', 'first_name', 'last_name', 'dob')
