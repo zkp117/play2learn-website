@@ -76,6 +76,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'play2learn.wsgi.application'
 
+# EMAIL
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+DEFAULT_FROM_EMAIL = 'neeneez2008@gmail.com'
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
 DATABASES = {
     'default': { # 
         'ENGINE': 'django.db.backends.postgresql',
