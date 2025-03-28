@@ -12,7 +12,7 @@ def send_email(to, subject, content):
             html_content=content
         )
         response = sg.send(email)
-        print(f"Email sent! Status: {response.status_code}, Response body: {response.body}")
+        print(f"Email sent! Status: {response.status_code}")
         return response.status_code
     except Exception as e:
         print(f"Error sending email: {str(e)}")
