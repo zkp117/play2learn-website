@@ -8,11 +8,11 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
 
     # User Management
-    path('anagramhunt/', include('anagramhunt.urls')),
+    path('account/', include('allauth.urls')),
+    path('my-account/', MyAccountView.as_view(), name='my-account'),
 
     # Local Apps
-    path('account/', include('allauth.urls')),
     path('mathfacts/', include('mathfacts.urls')),
-    path('my-account/', MyAccountView.as_view(), name='my-account'),
+    path('anagramhunt/', include('anagramhunt.urls')),
     path('', include('pages.urls')),
 ]
