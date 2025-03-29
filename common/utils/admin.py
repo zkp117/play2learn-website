@@ -24,8 +24,6 @@ def remove_fields(fieldsets, fieldset, fields):
                 field_list.remove(field) # raises exception if field not found
             _fieldset[1]['fields'] = tuple(field_list)
             break
-    else:
-        raise Exception(f'No such fieldset: {fieldset}')
 
     return fieldsets
 
