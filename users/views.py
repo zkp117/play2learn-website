@@ -12,8 +12,14 @@ class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, Passwor
 
 class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
+    form_class = CustomUserChangeForm
     success_message = 'Update Successful'
-    template_name = 'users/my_account.html'
+    template_name = 'account/my_account.html'
 
     def get_object(self):
         return self.request.user
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("Context Data:", context)
+        return context
