@@ -1,6 +1,6 @@
 from django.views.generic import ListView, TemplateView, CreateView
 from django.shortcuts import render
-from .models import Mathfacts, MathScore, Mathform
+from .models import Mathfacts, MathScore, MathForm
 
 class MathGameView(TemplateView):
     def get(self, request, *args, **kwargs):
