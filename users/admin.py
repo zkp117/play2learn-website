@@ -8,7 +8,6 @@ from common.admin import Play2LearnAdmin
 from common.utils.admin import append_fields, move_fields, remove_fields
 from django.contrib.admin.sites import NotRegistered
 
-
 CustomUser = get_user_model()
 
 try:
