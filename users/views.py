@@ -1,23 +1,20 @@
-from django.shortcuts import redirect, render
-from django.views.generic import TemplateView
-from .forms import CustomUserChangeForm
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.views.generic import UpdateView
 
-class MyAccountPageView(TemplateView):
-    template_name = "account/my_account.html"
+from allauth.account.views import PasswordChangeView
 
-    def get(self, request, *args, **kwargs):
-        form = CustomUserChangeForm(instance = request.user)
-        return self.render_to_response({'form': form})
-    
-    def post(self, request, *args, **kwargs):
-        form = CustomUserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('my-account')
-        return self.render_to_response({'form': form})
-    
-class CustomPasswordChangeView(PasswordChangeView):
-    template_name = 'account/change_password.html'
-    success_url = reverse_lazy('my_account')
+from .forms import CustomUserChangeForm
+from django.contrib.messages.views import SuccessMessageMixin
+class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
+    success_url = reverse_lazy('my-account')
+
+class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    form_class = CustomUserChangeForm
+    success_message = 'Update Successful'
+    template_name = 'account/my_account.html'
+
+    def get_object(self):
+        return self.request.user
