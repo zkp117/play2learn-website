@@ -14,3 +14,12 @@ class MathScoreView(ListView):
 
     def get_queryset(self):
         return MathScore.objects.filter(mathgame_id=self.kwargs['mathgame_id']).order_by('-score')[:10]
+    
+
+class MathfactsCreateView(CreateView):
+    model = Mathfacts
+    form_class = MathForm
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

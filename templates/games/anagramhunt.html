@@ -1,0 +1,10 @@
+{% extends "_base.html" %} 
+
+{% block title %}Score{% endblock %} 
+
+<small class="text-muted">
+    Created on: {{ score.created }} by {{ score.user.username }}<br>
+    Last updated: {{ score.updated }}
+  </small>
+
+  {% block main %}
