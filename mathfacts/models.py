@@ -37,5 +37,6 @@ class MathScore(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - Score: {self.score} - Level: {self.chosen_highest_number}"
-    
 
+class MathForm(models.Model):
+    [...]
