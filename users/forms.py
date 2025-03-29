@@ -13,15 +13,6 @@ class SignupForm(forms.Form):
         user.last_name = self.cleaned_data['last_name']
         user.save()
 class CustomUserChangeForm(UserChangeForm):
-    password = None
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'first_name', 'last_name', 'dob', 'avatar')
-        widgets = {
-            'dob': forms.SelectDateWidget(
-                attrs={
-                    'style': 'width: 31%; display: inline-block; margin: 0 1%'
-                },
-                years = BIRTH_YEAR_CHOICES
-            )
-        }
+        fields = ['username', 'email', 'first_name', 'last_name']  # Only include fields you want
