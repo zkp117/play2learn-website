@@ -14,7 +14,6 @@ def append_fields(fieldsets, fieldset, fields):
         
     return fieldsets
 
-
 def remove_fields(fieldsets, fieldset, fields):
    
     for _fieldset in fieldsets:

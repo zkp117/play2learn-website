@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import MyAccountView
 
 urlpatterns = [
     # Admin
@@ -8,8 +7,8 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
 
     # User Management
+    path('account/', include('users.urls')),
     path('account/', include('allauth.urls')),
-    path('my-account/', MyAccountView.as_view(), name='my-account'),
 
     # Local Apps
     path('mathfacts/', include('mathfacts.urls')),
