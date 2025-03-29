@@ -18,8 +18,3 @@ class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         return self.request.user
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print("Context Data:", context)
-        return context
