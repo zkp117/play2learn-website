@@ -1,9 +1,18 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
+from django.contrib import admin
+from allauth.socialaccount.models import SocialApp
+from django.contrib.admin.sites import NotRegistered
+
+# Only unregister SocialApp if it's already registered
+try:
+    admin.site.unregister(SocialApp)
+except NotRegistered:
+    pass  # SocialApp is not registered, so just ignore it
+
 
 def validate_avatar(value):
     w, h = get_image_dimensions(value)
