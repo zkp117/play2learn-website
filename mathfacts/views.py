@@ -1,12 +1,10 @@
 from django.views.generic import ListView, TemplateView, CreateView
 from django.shortcuts import render
 from .models import Mathfacts, MathScore, MathForm
-
 class MathGameView(TemplateView):
     def get(self, request, *args, **kwargs):
         mathgame = Mathfacts.objects.get(pk=kwargs['pk'])
         return render(request, 'mathfacts/play.html', {'mathgame': mathgame})
-
 class MathScoreView(ListView):
     model = MathScore
     template_name = 'pages/math_scorelist.html'
@@ -14,8 +12,6 @@ class MathScoreView(ListView):
 
     def get_queryset(self):
         return MathScore.objects.filter(mathgame_id=self.kwargs['mathgame_id']).order_by('-score')[:10]
-    
-
 class MathfactsCreateView(CreateView):
     model = Mathfacts
     form_class = MathForm
