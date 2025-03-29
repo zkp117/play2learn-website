@@ -2,7 +2,6 @@ from datetime import datetime
 
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserChangeForm
 
 BIRTH_YEAR_CHOICES = range(1915, datetime.now().year)
 class SignupForm(forms.Form):
@@ -14,9 +13,7 @@ class SignupForm(forms.Form):
         user.last_name = self.cleaned_data['last_name']
         user.save()
 
-class CustomUserChangeForm(UserChangeForm):
-    password = None
-
+class CustomUserChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ('email', 'username', 'first_name', 'last_name', 'dob', 'avatar')
@@ -28,3 +25,4 @@ class CustomUserChangeForm(UserChangeForm):
                 years = BIRTH_YEAR_CHOICES
             )
         }
+
