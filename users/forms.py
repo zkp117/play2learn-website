@@ -1,8 +1,8 @@
 from datetime import datetime
 from django import forms
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
 from .models import CustomUser
+
 
 BIRTH_YEAR_CHOICES = range(1915, datetime.now().year)
 
@@ -18,11 +18,3 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('email', 'username', 'first_name', 'last_name', 'dob')
-        widgets = {
-            'dob': forms.SelectDateWidget(
-                attrs={
-                    'style': 'width: 31%; display: inline-block; margin: 0 1%'
-                },
-                years = BIRTH_YEAR_CHOICES
-            )
-        }
