@@ -7,6 +7,7 @@ from common.admin import Play2LearnAdmin
 from common.utils.admin import append_fields, move_fields, remove_fields
 
 CustomUser = get_user_model()
+
 @admin.register(CustomUser)
 class CustomUserAdmin(Play2LearnAdmin, UserAdmin):
     model = CustomUser
@@ -44,4 +45,3 @@ class CustomUserAdmin(Play2LearnAdmin, UserAdmin):
     def get_form(self, request, obj=None, **kwargs):
         self.save_on_top = obj is not None
         return super().get_form(request, obj, **kwargs)
-
