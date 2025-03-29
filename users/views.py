@@ -2,8 +2,10 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import CustomUserChangeForm
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
-class MyAccountView(TemplateView):
+class MyAccountPageView(TemplateView):
     template_name = "account/my_account.html"
 
     def get(self, request, *args, **kwargs):
@@ -16,3 +18,7 @@ class MyAccountView(TemplateView):
             form.save()
             return redirect('my-account')
         return self.render_to_response({'form': form})
+    
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'account/change_password.html'
+    success_url = reverse_lazy('my_account')
