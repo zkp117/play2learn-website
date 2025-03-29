@@ -3,13 +3,18 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from django.utils.safestring import mark_safe
 from django.urls import reverse
-
-from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
-
+from allauth.socialaccount.models import SocialApp
 from common.admin import Play2LearnAdmin
 from common.utils.admin import append_fields, move_fields, remove_fields
+from django.contrib.admin.sites import NotRegistered
+
 
 CustomUser = get_user_model()
+
+try:
+    admin.site.unregister(SocialApp)
+except NotRegistered:
+    pass  # SocialApp is not registered, so just skip
 
 @admin.register(CustomUser)
 class CustomUserAdmin(Play2LearnAdmin, UserAdmin):
@@ -48,8 +53,10 @@ class CustomUserAdmin(Play2LearnAdmin, UserAdmin):
     def get_form(self, request, obj=None, **kwargs):
         self.save_on_top = obj is not None
         return super().get_form(request, obj, **kwargs)
+    
+    @admin.register(SocialApp)
+    class SocialAppAdmin(admin.ModelAdmin):
+        list_display = ('name', 'provider', 'client_id', 'secret', 'site')
 
 
 admin.site.unregister(SocialApp)
-admin.site.unregister(SocialAccount)
-admin.site.unregister(SocialToken)
