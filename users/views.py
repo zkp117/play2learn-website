@@ -12,7 +12,6 @@ class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, Passwor
 
 class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
-    form_class = CustomUserChangeForm
     success_message = 'Update Successful'
     template_name = 'users/my_account.html'
 
