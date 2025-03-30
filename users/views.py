@@ -5,23 +5,14 @@ from django.views.generic import UpdateView
 from allauth.account.views import PasswordChangeView
 from .forms import CustomUserChangeForm
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-
-@login_required
-def user_account_view(request):
-    if request.method == "POST":
-        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('my_account')
-        else:
-            form = CustomUserChangeForm(instance=request.user)
-
-        return render(request, "account/my_account.html", {"form": form})
 class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy('my_account')
 class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
     model = get_user_model()
     form_class = CustomUserChangeForm
     success_message = 'Update Successful'
