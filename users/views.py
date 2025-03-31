@@ -9,10 +9,6 @@ class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, Passwor
     success_url = reverse_lazy('my_account')
 class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
     model = get_user_model()
     form_class = CustomUserChangeForm
     success_message = 'Update Successful'
