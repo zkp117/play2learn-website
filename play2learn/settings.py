@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'anagramhunt.apps.AnagramhuntConfig',
     'mathfacts.apps.MathfactsConfig',
     'users.apps.UsersConfig',
+    'contact.apps.ContactConfig',
 
     # third-party apps
     'crispy_forms',
