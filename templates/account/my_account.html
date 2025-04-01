@@ -8,6 +8,13 @@
   <img src="{{ user.avatar.url }}" alt="Avatar"
         class="img-thumbnail mx-auto d-block"/>
 {% endif %}
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-success">
+    {{ message }}
+  </div>
+{% endfor %}
+{% endif %}
 <div class="card border-primary m-auto mb-3" style="max-width: 30rem">
   <div class="card-header text-center">My Account</div>
   <div class="card-body">

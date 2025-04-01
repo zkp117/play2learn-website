@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.cache import cache
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -20,5 +21,7 @@ class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     
     def form_valid(self, form):
             response = super().form_valid(form)
-            print("Form Errors:", form.errors)  # Debugging
+            self.request.user.refresh_from_db()
+            cache.clear()
             return response
+    
