@@ -4,6 +4,6 @@ from .views import ContactAppView, ContactAppThanksView
 
 app_name = 'contact'
 urlpatterns = [
-    path('contact-app/', ContactAppView.as_view(), name='app'),
-    path('contact-app/thanks/', ContactAppThanksView.as_view(), name='thanks'),
+    path('contact_us/', ContactAppView.as_view(), name='app'),
+    path('contact_us/thanks/', ContactAppThanksView.as_view(), name='thanks'),
 ]

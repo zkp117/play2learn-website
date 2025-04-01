@@ -16,5 +16,5 @@ urlpatterns = [
     path('mathfacts/', include('mathfacts.urls')),
     path('anagramhunt/', include('anagramhunt.urls')),
     path('', include('pages.urls')),
-    path('contact/', include('contact.urls')),
+    path('contact/', include('contact.urls', namespace='contact')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
