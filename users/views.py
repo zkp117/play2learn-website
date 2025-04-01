@@ -13,7 +13,7 @@ class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = CustomUserChangeForm
     success_message = 'Update Successful'
     success_url = reverse_lazy('my-account')
-    template_name = '/my-account.html'
+    template_name = 'account/my_account.html'
 
     def get_object(self):
         return self.request.user
