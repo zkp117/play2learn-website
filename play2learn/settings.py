@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-0^=_l^slk4l=b236-2q9+)5om$ge)%ovmz%@^fltsu)sgnww41'
@@ -10,6 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# INSTALLED_APPS SECTION
 
 INSTALLED_APPS = [
     # built-in django apps
@@ -39,9 +39,13 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# CRISPY SECTION
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# MIDDLEWARE SECTION
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'play2learn.urls'
+
+# TEMPLATES SECTION
 
 TEMPLATES = [
     {
@@ -76,7 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'play2learn.wsgi.application'
 
-# EMAIL
+# EMAIL SECTION 
+
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
@@ -86,6 +93,8 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 DEFAULT_FROM_EMAIL = 'neeneez2008@gmail.com'
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
+# DATABASES SECTION 
 
 DATABASES = {
     'default': { # 
@@ -147,6 +156,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_URL = 'static/'
 
