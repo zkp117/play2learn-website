@@ -1,4 +1,4 @@
-import S3Boto3Storage
+from storages.backends.s3boto3 import S3Boto3Storage
 
 class StaticStorage(S3Boto3Storage):
     """ Class for storing static files. """
