@@ -60,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.cache.CacheMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'storages.backends.s3boto3'
 ]
 
 ROOT_URLCONF = 'play2learn.urls'
@@ -175,9 +174,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_REGION_NAME = 'us-east-2' 
 
-STATICFILES_STORAGE = 'play2learn.storage_backends.StaticStorage'
-DEFAULT_FILE_STORAGE = 'play2learn.storage_backends.PublicMediaStorage'
-PRIVATE_FILE_STORAGE = 'play2learn.storage_backends.PrivateMediaStorage'
+STATICFILES_STORAGE = 'play2learn_website.storage_backends.StaticStorage'
+DEFAULT_FILE_STORAGE = 'play2learn_website.storage_backends.PublicMediaStorage'
+PRIVATE_FILE_STORAGE = 'play2learn_website.storage_backends.PrivateMediaStorage'
 
 STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
 MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
@@ -186,6 +185,8 @@ PUBLIC_MEDIA_LOCATION = 'media/public'
 PRIVATE_MEDIA_STORAGE = 'media/private'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
