@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'storages',
 ]
 
 SITE_ID = 1
@@ -173,9 +174,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_REGION_NAME = 'us-east-2' 
 
-STATICFILES_STORAGE = 'djangojokes.storage_backends.StaticStorage'
-DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
-PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
+STATICFILES_STORAGE = 'play2learn.storage_backends.StaticStorage'
+DEFAULT_FILE_STORAGE = 'play2learn.storage_backends.PublicMediaStorage'
+PRIVATE_FILE_STORAGE = 'play2learn.storage_backends.PrivateMediaStorage'
 
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
@@ -183,6 +184,8 @@ MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
