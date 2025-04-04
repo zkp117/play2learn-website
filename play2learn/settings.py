@@ -174,8 +174,8 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_REGION_NAME = 'us-east-2' 
 
-STATICFILES_STORAGE = 'play2learn.storage_backends.StaticStorage'
-DEFAULT_FILE_STORAGE = 'play2learn.storage_backends.PublicMediaStorage'
+STATICFILES_STORAGE = "storages.backends.s3.S3Storage"
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 PRIVATE_FILE_STORAGE = 'play2learn.storage_backends.PrivateMediaStorage'
 
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
