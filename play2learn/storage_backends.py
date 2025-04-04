@@ -6,6 +6,10 @@ class StaticStorage(S3Boto3Storage):
     default_acl = 'public-read'
     file_overwrite = True
 
+    def __init__(self, *args, **kwargs):
+        print("🚀 Using StaticStorage (S3) for static files!")
+        super().__init__(*args, **kwargs)
+
 class PublicMediaStorage(S3Boto3Storage):
     """ Class for storing public media files. """
     location = 'media/public'
