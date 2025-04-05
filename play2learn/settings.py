@@ -180,7 +180,7 @@ DEFAULT_FILE_STORAGE = 'play2learn.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'play2learn.storage_backends.PrivateMediaStorage'
 
 STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/public/'
 
 PUBLIC_MEDIA_LOCATION = 'media/public'
 PRIVATE_MEDIA_STORAGE = 'media/private'
