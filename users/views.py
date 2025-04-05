@@ -6,6 +6,8 @@ from django.views.generic import UpdateView
 from allauth.account.views import PasswordChangeView as AllauthPasswordChangeView  # Renamed
 from .forms import CustomUserChangeForm
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 class CustomPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, AllauthPasswordChangeView):  # Renamed
     success_url = reverse_lazy('my-account')
@@ -25,4 +27,11 @@ class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
             self.request.user.refresh_from_db()
             cache.clear()
             return response
+    
+@login_required
+def clear_avatar(request):
+    user = request.user
+    user.avatar.delete()  # Delete the avatar file
+    user.save()  # Save the user instance
+    return redirect('my-account')  # Redirect back to the profile page
     

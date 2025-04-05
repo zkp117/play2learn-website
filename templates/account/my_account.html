@@ -4,27 +4,24 @@
 {% block title %}My Account{% endblock title %}
 
 {% block main %}
-{% if user.avatar and not form.avatar.errors %}
-    <img src="{{ user.avatar.url }}" alt="Avatar" class="img-thumbnail mx-auto d-block"/>
-{% endif %}
-{% if messages %}
-{% for message in messages %}
-  <div class="alert alert-success">
-    {{ message }}
-  </div>
-{% endfor %}
-{% endif %}
 <div class="card border-primary m-auto mb-3" style="max-width: 30rem">
-  <div class="card-header text-center">My Account</div>
+  <div class="card-header text-center">Update Profile</div>
   <div class="card-body">
-    <form method="POST" enctype="multipart/form-data" class="m-auto" novalidate>
+    <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit" class="form-control btn btn-primary">UPDATE</button>
+      <button class="form-control btn btn-primary">UPDATE PROFILE</button>
     </form>
-  </div>
-  <div class="card-footer text-center">
-    <p><a href="{% url 'account_change_password' %}">Change Password</a></p>
+
+    {% if user.avatar %}
+      <img src="{{ user.avatar.url }}" alt="Avatar" class="img-fluid mt-3">
+      <form method="POST" action="{% url 'clear_avatar' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-2">Clear Avatar</button>
+      </form>
+    {% else %}
+      <p>No avatar set.</p>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
