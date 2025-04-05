@@ -5,8 +5,7 @@
 
 {% block main %}
 {% if user.avatar and not form.avatar.errors %}
-  <img src="{{ user.avatar.url }}" alt="Avatar"
-        class="img-thumbnail mx-auto d-block"/>
+    <img src="{{ user.avatar.url }}" alt="Avatar" class="img-thumbnail mx-auto d-block"/>
 {% endif %}
 {% if messages %}
 {% for message in messages %}
