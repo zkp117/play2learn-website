@@ -14,13 +14,10 @@ class CustomUser(AbstractUser):
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )
-    avatar = models.ImageField(
-        upload_to='media/public/avatars/', 
-        blank=True,
-        help_text='Image must be 500px by 500px.',
-        validators=[validate_avatar],
-        storage=PublicMediaStorage()  # Custom storage backend
-    )
+    avatar = models.ImageField(upload_to='avatars/', 
+    storage=PublicMediaStorage(), 
+    blank=True, 
+    null=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} ({self.username})'
